@@ -1,0 +1,107 @@
+/* media queries  */
+
+@media (max-width:991px) {
+    html {
+        font-size: 55%;
+    }
+    .header .header-1 {
+        padding: 2rem;
+    }
+    section {
+        padding: 3rem 2rem;
+    }
+    .footer .box-container {
+        display: flex;
+    }
+}
+
+@media (max-width:768px) {
+    html {
+        scroll-padding-top: 0;
+    }
+    body {
+        padding-bottom: 6rem;
+    }
+    .header .header-2 {
+        display: none;
+    }
+    .bottom-navbar {
+        display: block;
+    }
+    #search-btn {
+        display: inline-block;
+    }
+    .home .row .coffee-slider {
+        margin-top: 2rem;
+    }
+    .header .header-1 {
+        box-shadow: var(--box-shadow);
+        position: relative;
+    }
+    .header .header-1 .search-form {
+        position: absolute;
+        top: -115%;
+        left: 4rem;
+        right: 3.5rem;
+        width: 90%;
+        box-shadow: var(--box-shadow);
+    }
+    .header .header-1 .search-form.active {
+        top: 115%;
+    }
+    .home .row .content {
+        text-align: center;
+    }
+    .home .row .content h3 {
+        font-size: 3.5rem;
+    }
+    .service-container {
+        margin-left: 6.5rem;
+    }
+    .service-container .icons {
+        padding: 1.5rem 0;
+    }
+    .community {
+        background-position: right;
+    }
+    .community form {
+        margin-right: 0;
+        max-width: 100%;
+    }
+    .footer .box-container {
+        display: flex;
+    }
+    .footer .box-container .box {
+        margin: 0 3rem;
+    }
+    .coffee-menu-box {
+        display: block;
+    }
+}
+
+@media (max-width:450px) {
+    html {
+        font-size: 50%;
+    }
+    .header .header-1 .search-form {
+        padding-right: 5rem;
+    }
+    .footer .box-container {
+        display: grid;
+    }
+    .coffee-menu-box {
+        margin-top: 10px;
+        width: 98%;
+    }
+    .btn-order {
+        margin-bottom: 7px;
+    }
+    .coffee-menu-img {
+        width: 50%;
+        float: none;
+        margin-top: 0;
+    }
+    .coffee-menu-img {
+        margin-left: 70px;
+    }
+}
