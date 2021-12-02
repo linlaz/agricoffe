@@ -28,6 +28,7 @@
         <button type="button" class="btn btn-danger">cancel</button>
         </form>
     @endif
+    
     <table class="table">
         <thead>
             <tr>
