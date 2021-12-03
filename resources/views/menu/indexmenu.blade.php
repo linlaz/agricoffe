@@ -3,9 +3,9 @@
     <button type="button" wire:click="addmenu" class="btn btn-primary"> + Create new menu</button>
     @if ($form == 'on')
         @if ($id_menu != null)
-            <form wire:submit.prevent="updatemenu({{ $id_menu }})"  enctype="multipart/form-data">
+            <form wire:submit.prevent="updatemenu({{ $id_menu }})" enctype="multipart/form-data">
             @else
-                <form wire:submit.prevent="storemenu"  enctype="multipart/form-data">
+                <form wire:submit.prevent="storemenu" enctype="multipart/form-data">
         @endif
 
         <div class="mb-3">
@@ -35,18 +35,21 @@
                 </div>
             @enderror
         </div>
-        <div class="mb-3">
-            <label for="photo_menu" class="form-label">photo menu</label>
-            <br>
-             <input type="file" wire:model="photo_menu">
-            @error('photo_menu')
-                <div class="alert alert-danger mt-2" role="alert">
-                    {{ $message }}
+        @if ($id_menu == null)
+            <div class="mb-3">
+                    <label for="photo_menu" class="form-label">photo menu</label>
+                    <br>
+                    <input type="file" wire:model="photo_menu">
+                    @error('photo_menu')
+                        <div class="alert alert-danger mt-2" role="alert">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
-            @enderror
-        </div>
+        @endif
+
         <button type="submit" class="btn btn-primary">Submit</button>
-        <button type="button" class="btn btn-danger">cancel</button>
+        <button type="button" wire:click="resetall" class="btn btn-danger">cancel</button>
         </form>
     @endif
 
@@ -56,6 +59,7 @@
                 <th scope="col">name menu</th>
                 <th scope="col">price</th>
                 <th scope="col">description</th>
+                <th scope="col">photo</th>
                 <th scope="col">action</th>
             </tr>
         </thead>
@@ -65,6 +69,7 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->price }}</td>
                     <td>{{ $item->description }}</td>
+                    <td><img src="{{ asset('storage/' . $item->photo) }}" alt=""></td>
                     <td>
                         <button type="button" wire:click="editmenu('{{ $item->id }}')"
                             class="btn btn-warning">edit</button>
@@ -73,7 +78,7 @@
                     </td>
                 </tr>
             @endforeach
-
         </tbody>
     </table>
+    {{ $menu->links() }}
 </div>

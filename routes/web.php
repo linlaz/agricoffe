@@ -1,9 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\blogController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\userController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[DashboardController::class,'index'])->name('welcome');
 
 Route::group(['prefix' => 'dashboard', 'role_or_permission:admin|dashboard-menu'], function () {
     Route::get('/', [MenuController::class, 'index'])->name('dashboard');

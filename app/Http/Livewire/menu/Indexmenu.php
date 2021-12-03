@@ -20,7 +20,7 @@ class Indexmenu extends Component
     protected $rules = [
         'name_menu' => 'required',
         'price_menu' => 'required|integer',
-        'description_menu' => 'required|min:10|max:100'
+        'description_menu' => 'required|min:10'
     ];
     public function render()
     {
@@ -37,7 +37,7 @@ class Indexmenu extends Component
     public function storemenu()
     {
         $this->validate();
-        $path = $this->photo_menu->store('public');
+        $path = $this->photo_menu->store('photo');
         Menu::create([
             'name' => $this->name_menu,
             'price' => $this->price_menu,
@@ -60,6 +60,7 @@ class Indexmenu extends Component
         $this->description_menu = null;
         $this->form = null;
         $this->id_menu = null;
+        $this->photo_menu = null;
     }
     public function editmenu($idmenu)
     {
@@ -69,6 +70,7 @@ class Indexmenu extends Component
         $this->name_menu = $menu->name;
         $this->price_menu = $menu->price;
         $this->description_menu = $menu->description;
+        $this->photo_menu = $menu->photo;
     }
     public function updatemenu($idmenu)
     {
