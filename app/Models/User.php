@@ -61,10 +61,14 @@ class User extends Authenticatable
 
     public function views()
     {
-        return $this->hasMany(views::class, 'id');
+        return $this->hasMany(views::class, 'user_id');
     }
     public function reviews()
     {
         return $this->hasMany(Review::class, 'user_id');
+    }
+    public function cart()
+    {
+        return $this->hasMany(Cart::class,'user_id');
     }
 }

@@ -17,10 +17,15 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/',[DashboardController::class,'index'])->name('welcome');
+Route::get('/', [DashboardController::class, 'index'])->name('welcome');
+Route::get('/menu-detail', [MenuController::class, 'show'])->name('menudetail');
 
 Route::group(['prefix' => 'dashboard', 'role_or_permission:admin|dashboard-menu'], function () {
     Route::get('/', [MenuController::class, 'index'])->name('dashboard');
+});
+
+Route::group(['prefix' => 'cart', 'middleware' => ['auth:sanctum']], function () {
+    Route::get('/', [MenuController::class, 'showbyuser'])->name('cart');
 });
 Route::group(['prefix' => 'blogs', 'middleware' => ['auth:sanctum', 'role_or_permission:admin|dashboard-blog']], function () {
     Route::get('/', [blogController::class, 'index'])->name('blogs');

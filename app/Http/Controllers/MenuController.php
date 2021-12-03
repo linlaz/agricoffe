@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Menu;
 use App\Http\Requests\StoreMenuRequest;
 use App\Http\Requests\UpdateMenuRequest;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class MenuController extends Controller
 {
@@ -23,6 +25,11 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function showbyuser()
+    {
+        $cart = Cart::where('user_id',Auth::user()->id)->where('checkout','0')->get();
+        return view('indexpage.cartdetail');
+    }
     public function create()
     {
         //
@@ -45,9 +52,12 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function show(Menu $menu)
+    public function show()
     {
-        //
+        $menu = Menu::all();
+        return view('indexpage.menudetail',[
+            'menu' => $menu
+        ]);
     }
 
     /**

@@ -79,102 +79,26 @@
         <div class="swiper featured-slider">
 
             <div class="swiper-wrapper">
+                @foreach ($menu as $item)
+                    <div class="swiper-slide box">
+                        <div class="icons">
+                            <a href="#" class="fas fa-search"></a>
+                            <a href="#" class="fas fa-heart"></a>
+                            <a href="#" class="fas fa-eye"></a>
+                        </div>
+                        <div class="image">
+                            <img src="{{ asset('storage/' . $item->photo) }}" alt="">
+                        </div>
+                        <div class="content">
+                            <h3>{{ $item->name }}</h3>
+                            <div class="price">IDR {{ $item->price }} </div>
+                            <a href="#" class="btn">add to cart</a>
+                        </div>
+                    </div>
+                @endforeach
 
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="foto/kopi-1.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>cappucino</h3>
-                        <div class="price">IDR 20,000 <span>IDR 25,000</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
 
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="foto/kopi-2.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>flat white</h3>
-                        <div class="price">IDR 20,000 <span>IDR 25,000</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
 
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="foto/kopi-3.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>espresso</h3>
-                        <div class="price">IDR 20,000 <span>IDR 25,000</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="foto/kopi-4.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>americano</h3>
-                        <div class="price">IDR 20,000 <span>IDR 25,000</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="foto/kopi-5.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>latte</h3>
-                        <div class="price">IDR 20,000 <span>IDR 25,000</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="foto/kopi-6.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>mocha</h3>
-                        <div class="price">IDR 20,000 <span>IDR 25,000</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
 
             </div>
 
@@ -184,178 +108,6 @@
         </div>
 
     </section>
-
-
-    <!-- community section -->
-
-    {{-- <section class="community" style="margin:auto;">
-
-        <form action="">
-            <h3>Join AgriCoffee Community</h3>
-            <p>Coffee lovers, welcome to our commumity! AgriCoffee community has 0 member and their number is still
-                zero.</p>
-            <input type="email" name="" placeholder="enter your email" id="" class="box">
-            <input type="submit" value="subscribe" class="btn">
-        </form>
-
-    </section> --}}
-
-
-    <!-- menu section -->
-
-    {{-- <section class="menu" id="">
-
-        <h1 class="heading"> <span>our menu</span> </h1>
-
-        <div class="swiper menu-slider">
-
-            <div class="swiper-wrapper">
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="foto/kopi-1.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>cappucino</h3>
-                        <div class="price">IDR 20,000 </div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="foto/kopi-2.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>flat white</h3>
-                        <div class="price">IDR 20,000 </div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="foto/kopi-3.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>espresso</h3>
-                        <div class="price">IDR 20,000 </div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="foto/kopi-4.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>americano</h3>
-                        <div class="price">IDR 20,000 </div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="foto/kopi-5.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>latte</h3>
-                        <div class="price">IDR 20,000 </div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="swiper menu-slider">
-
-            <div class="swiper-wrapper">
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="foto/kopi-6.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>mocha</h3>
-                        <div class="price">IDR 20,000 </div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="foto/kopi-7.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>ice cappucino</h3>
-                        <div class="price">IDR 20,000 </div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="foto/kopi-8.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>ice americano</h3>
-                        <div class="price">IDR 20,000 </div>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-            </div>
-
-        </div>
-
-    </section> --}}
-
 
     <!-- about us section -->
 
@@ -380,21 +132,33 @@
     <section class="reviews" id="reviews">
 
         <h1 class="heading"> <span>client's reviews</span> </h1>
+
         <div class="swiper reviews-slider">
+
             <div class="swiper-wrapper">
-                <div class="swiper-slide box">
-                    <img src="foto/user2.png" alt="">
-                    <h3>anonim</h3>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur nihil ipsa placeat. Aperiam
-                        at sint, eos ex similique facere hic.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
+                @foreach ($review as $item)
+                    <div class="swiper-slide box">
+                        <img src="foto/user2.png" alt="">
+                        @isset($item->user->name)
+                            <h3>{{ $item->user->name }}</h3>
+                        @else
+                            <h3>anonim</h3>
+                        @endisset
+                        @isset($item->text)
+                            <p>{{ $item->text }}</p>
+                        @endisset
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
                     </div>
-                </div>
+                @endforeach
+
+
+
 
             </div>
 
@@ -420,7 +184,8 @@
                         </div>
                         <div class="content">
                             <h3>{{ $item->title }}</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, odio.</p>
+                            <h5><{{ $item->Category->name }}</h5>
+                            <p>{!! Str::limit(strip_tags($item->text), 100, '...') !!}</p>
                             <a href="#" class="btn">read more</a>
                         </div>
                     </div>
