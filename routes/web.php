@@ -30,4 +30,8 @@ Route::group(['prefix' => 'blogs', 'middleware' => ['auth:sanctum']], function (
     Route::post('/{blog}/edit', [blogController::class, 'update'])->name('updateblog');
 });
 
+Route::get('/role', function () {
+    return view('role.indexcontroller');
+})->name('role');
+
 
