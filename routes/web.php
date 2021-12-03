@@ -20,10 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'dashboard', 'role_or_permission::admin|dashboard-menu'], function () {
+Route::group(['prefix' => 'dashboard', 'role_or_permission:admin|dashboard-menu'], function () {
     Route::get('/', [MenuController::class, 'index'])->name('dashboard');
 });
-Route::group(['prefix' => 'blogs', 'middleware' => ['auth:sanctum', 'role_or_permission::admin|dashboard-blog']], function () {
+Route::group(['prefix' => 'blogs', 'middleware' => ['auth:sanctum', 'role_or_permission:admin|dashboard-blog']], function () {
     Route::get('/', [blogController::class, 'index'])->name('blogs');
     Route::get('/createblog', [blogController::class, 'create'])->name('createblog');
     Route::post('/createblogs', [blogController::class, 'store'])->name('storeblog');
@@ -33,8 +33,8 @@ Route::group(['prefix' => 'blogs', 'middleware' => ['auth:sanctum', 'role_or_per
 
 Route::get('/role', function () {
     return view('role.indexcontroller');
-})->name('role')->middleware('auth:sanctum', 'role_or_permission::admin|dashboard-role');
+})->name('role')->middleware('auth:sanctum', 'role_or_permission:admin|dashboard-role');
 
-Route::group(['prefix' => 'user', 'middleware' => ['auth:sanctum', 'role_or_permission::admin|dashboard-user']], function () {
+Route::group(['prefix' => 'user', 'middleware' => ['auth:sanctum', 'role_or_permission:admin|dashboard-user']], function () {
     Route::get('/', [userController::class, 'index'])->name('user');
 });

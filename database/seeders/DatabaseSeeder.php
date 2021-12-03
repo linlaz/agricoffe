@@ -36,6 +36,9 @@ class DatabaseSeeder extends Seeder
         $dashboardrole = Permission::create([
             'name' => 'dashboard-role'
         ]);
+        $dashboarduser = Permission::create([
+            'name' => 'dashboard-user'
+        ]);
         $addrole = Permission::create([
             'name' => 'add-role'
         ]);
@@ -91,6 +94,7 @@ class DatabaseSeeder extends Seeder
         $user = User::create([
             'name' => 'lintang lazuardi',
             'email' => 'lazuardilintang@apps.ipb.ac.id',
+            'address' => 'wwates',
             'password' => bcrypt('linlaz11')
         ]);
         $user->assignRole('admin');
