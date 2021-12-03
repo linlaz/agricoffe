@@ -9,4 +9,12 @@ class View extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    public function blog()
+    {
+        return $this->belongsTo(Blog::class, 'id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(user::class, 'user_id');
+    }
 }

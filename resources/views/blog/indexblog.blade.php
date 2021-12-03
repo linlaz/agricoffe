@@ -13,7 +13,7 @@
                 {!! Str::limit(strip_tags($item->text), 200, '...') !!}
                 <div>
                         @if ($item->publish){{ 'publish' }}@else{{ 'draft' }}@endif.last
-                        update {{ $item->updated_at }} | {{ $item->category->name }}
+                        update {{ $item->updated_at }} | {{ $item->category->name }} |  <i class="ri-bar-chart-line"></i> {{ $item->views->where('blog_id',$item->id)->count() }}
                 </div>
                 <div class="card-footer text-muted">
                     @if ($item->publish)

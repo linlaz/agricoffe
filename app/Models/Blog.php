@@ -13,4 +13,9 @@ class Blog extends Model
     {
         return $this->belongsTo(Category::class, 'category_id');
     }
+    public function views()
+    {
+        return $this->hasMany(View::class, 'blog_id');
+    }
+
 }

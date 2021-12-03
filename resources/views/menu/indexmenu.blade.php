@@ -3,32 +3,53 @@
     <button type="button" wire:click="addmenu" class="btn btn-primary"> + Create new menu</button>
     @if ($form == 'on')
         @if ($id_menu != null)
-            <form wire:submit.prevent="updatemenu({{ $id_menu }})">
+            <form wire:submit.prevent="updatemenu({{ $id_menu }})"  enctype="multipart/form-data">
             @else
-                <form wire:submit.prevent="storemenu">
+                <form wire:submit.prevent="storemenu"  enctype="multipart/form-data">
         @endif
 
         <div class="mb-3">
             <label for="name_menu" class="form-label">name menu</label>
             <input type="text" class="form-control" id="name_menu" wire:model="name_menu">
+            @error('name_menu')
+                <div class="alert alert-danger mt-2" role="alert">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="price_menu" class="form-label">price menu</label>
             <input type="text" class="form-control" id="price_menu" wire:model="price_menu">
+            @error('price_menu')
+                <div class="alert alert-danger mt-2" role="alert">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="description_menu" class="form-label">description menu</label>
             <input type="text" class="form-control" id="description_menu" wire:model="description_menu">
+            @error('description_menu')
+                <div class="alert alert-danger mt-2" role="alert">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        <div class="mb-3">
+            <label for="photo_menu" class="form-label">photo menu</label>
+            <br>
+             <input type="file" wire:model="photo_menu">
+            @error('photo_menu')
+                <div class="alert alert-danger mt-2" role="alert">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-danger">cancel</button>
         </form>
     @endif
-    
+
     <table class="table">
         <thead>
             <tr>

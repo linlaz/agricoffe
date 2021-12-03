@@ -4,18 +4,24 @@ namespace App\Http\Livewire\menu;
 
 use App\Models\Menu;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Indexmenu extends Component
 {
+    use WithFileUploads;
     public $form = null;
     //menu
-    public $name_menu, $price_menu, $description_menu, $id_menu;
+    public $name_menu, $price_menu, $description_menu, $id_menu,$photo_menu;
     //endmenu
 
     protected $listeners = [
         'success' => '$refresh',
     ];
-
+    protected $rules = [
+        'name_menu' => 'required',
+        'price_menu' => 'required|integer',
+        'description_menu' => 'required|min:10|max:100'
+    ];
     public function render()
     {
         $menu = Menu::paginate(5);
@@ -30,10 +36,13 @@ class Indexmenu extends Component
     }
     public function storemenu()
     {
+        $this->validate();
+        $path = $this->photo_menu->store('public');
         Menu::create([
             'name' => $this->name_menu,
             'price' => $this->price_menu,
             'description' => $this->description_menu,
+            'photo' => $path
         ]);
         $this->resetall();
         $this->emit('success');
