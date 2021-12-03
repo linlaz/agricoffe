@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Http\Requests\StoreBlogRequest;
-use App\Http\Requests\UpdateBlogRequest;
+use App\Models\Category;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -25,7 +27,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('blog.createblog', [
+            'category' => Category::all()
+        ]);
     }
 
     /**
@@ -34,9 +38,35 @@ class BlogController extends Controller
      * @param  \App\Http\Requests\StoreBlogRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBlogRequest $request)
+    public function store(Request $request)
     {
-        //
+        $findcatergory = Category::where('slug', $request->name)->first();
+        if (is_null($findcatergory)) {
+            $request->validate([
+                'name' => 'required|unique:categories'
+            ]);
+            $created = Category::create([
+                'name' => $request->name,
+                'slug' => Str::of($request->name)->slug('-')
+            ]);
+            $findcatergory = Category::where('slug', $created->slug)->first();
+        }
+
+        $request->validate([
+            'title' => 'required|max:100',
+            'text' => 'required'
+        ]);
+        $slug = Str::of($request->title)->slug('-') . rand();
+        Blog::create([
+            'title' => $request->title,
+            'slug' => $slug,
+            'text' => $request->text,
+            'category_id' => $findcatergory->id,
+            'user_id' => Auth::user()->id,
+            'publish' => '1'
+        ]);
+
+        return redirect('/blogs');
     }
 
     /**
@@ -56,9 +86,13 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit($slug)
     {
-        //
+        $findblog = blog::where('slug', $slug)->first();
+        return view('blog.editblog', [
+            'blog' => $findblog,
+            'category' => Category::all()
+        ]);
     }
 
     /**
@@ -68,9 +102,32 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBlogRequest $request, Blog $blog)
+    public function update(Request $request, Blog $blog)
     {
-        //
+        $findcatergory = Category::where('slug', $request->name)->first();
+        if (is_null($findcatergory)) {
+            $request->validate([
+                'name' => 'required|unique:categories'
+            ]);
+            $created = Category::create([
+                'name' => $request->name,
+                'slug' => Str::of($request->name)->slug('-')
+            ]);
+            $findcatergory = Category::where('slug', $created->slug)->first();
+        }
+        $request->validate([
+            'title' => 'required|max:100',
+            'text' => 'required'
+        ]);
+        $slug = Str::of($request->title)->slug('-') . rand();
+        $blog->update([
+            'title' => $request->title,
+            'slug' => $slug,
+            'text' => $request->text,
+            'category_id' => $findcatergory->id,
+        ]);
+
+        return redirect('/blogs');
     }
 
     /**

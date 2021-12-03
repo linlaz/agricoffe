@@ -25,5 +25,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth:sanctum']], functi
 Route::group(['prefix' => 'blogs', 'middleware' => ['auth:sanctum']], function () {
     Route::get('/', [blogController::class, 'index'])->name('blogs');
     Route::get('/createblog',[blogController::class, 'create'])->name('createblog');
+    Route::post('/createblogs', [blogController::class, 'store'])->name('storeblog');
+    Route::get('/{slug}/edit', [blogController::class, 'edit'])->name('editblog');
+    Route::post('/{blog}/edit', [blogController::class, 'update'])->name('updateblog');
 });
+
 
