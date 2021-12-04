@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
-use App\Http\Requests\StoreReviewRequest;
-use App\Http\Requests\UpdateReviewRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -15,7 +15,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        return view('indexpage.review');
     }
 
     /**
@@ -34,9 +34,16 @@ class ReviewController extends Controller
      * @param  \App\Http\Requests\StoreReviewRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreReviewRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'subject' => 'required',
+        ]);
+        Review::create([
+            'user_id' => Auth::user()->id,
+            'text' =>$request->subject,
+        ]);
+        return redirect('/');
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\View;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -75,9 +76,19 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Blog $blog)
+    public function show($slug,Request $request)
     {
-        //
+        $findblog = Blog::where('slug', $slug)->first();
+        $findview = View::where('ip_user',$request->ip())->where('blog_id',$findblog->id)->first();
+        if(is_null($findview)){
+            View::create([
+                'blog_id' => $findblog->id,
+                'ip_user' => $request->ip(),
+            ]);
+        }
+        return view('indexpage.blog',[
+            'blog' => $findblog,
+        ]);
     }
 
     /**

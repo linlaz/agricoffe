@@ -17,7 +17,7 @@
     <!-- css file link  -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/responsive.css">
-
+    @livewireStyles
 </head>
 
 <body>
@@ -39,7 +39,21 @@
                 <div id="search-btn" class="fas fa-search"></div>
                 <a href="#" class="fas fa-heart"></a>
                 <a href="/cart" class="fas fa-shopping-cart"></a>
-                <a href="{{ route('login') }}" class="fas fa-user"></a>
+                @auth
+                    @role('admin')
+                        <a href="{{ route('dashboard') }}" class="fas fa-user"></a>
+                    @else
+                     <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                        <button class="fas fa-user" type="submit"></button>
+                     </form>
+                    @endrole
+                   
+                @endauth
+                @guest
+                    <a href="{{ route('login') }}" class="fas fa-user"></a>
+                @endguest
+
             </div>
 
         </div>
@@ -127,7 +141,7 @@
 
     <!-- custom js file link  -->
     <script src="/js/script.js"></script>
-
+    @livewireScripts
 </body>
 
 </html>

@@ -25,11 +25,6 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showbyuser()
-    {
-        $cart = Cart::where('user_id',Auth::user()->id)->where('checkout','0')->get();
-        return view('indexpage.cartdetail');
-    }
     public function create()
     {
         //
@@ -54,10 +49,8 @@ class MenuController extends Controller
      */
     public function show()
     {
-        $menu = Menu::all();
-        return view('indexpage.menudetail',[
-            'menu' => $menu
-        ]);
+       
+        return view('indexpage.menudetail');
     }
 
     /**
