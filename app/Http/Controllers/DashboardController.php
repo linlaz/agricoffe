@@ -18,11 +18,9 @@ class DashboardController extends Controller
     {
         $blog = Blog::where('publish','1')->get();
         $review = Review::get();
-        $menu = Menu::limit(7)->get();
         return view('welcome',[
             'blog' => $blog,
             'review' => $review,
-            'menu' => $menu
         ]);
     }
 
