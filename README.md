@@ -26,3 +26,5 @@
 ![menu-detail](https://user-images.githubusercontent.com/89636741/144730957-317c8a85-0c04-418d-b48e-97b3233c81b2.png)
 > Cart 
 ![cart-user](https://user-images.githubusercontent.com/89636741/144731010-3ff4457d-d831-4689-a2fa-df131e64cd74.png)
+## Entity Relationship Diagram (ERD)
+![basdat-basdat v2](https://user-images.githubusercontent.com/89636741/144731267-e9cf4551-0d09-4a6f-a475-47fc8c231d0d.png)
