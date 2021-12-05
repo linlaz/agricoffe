@@ -4,7 +4,7 @@
 
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <a href="{{ route('createblog') }}" class='btn btn-primary my-2'>
+        <a href="/blogs/createblog" class='btn btn-primary my-2'>
             + create blog
         </a>
         @foreach ($blogs as $item)

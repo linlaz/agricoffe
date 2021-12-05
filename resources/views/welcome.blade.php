@@ -170,7 +170,7 @@
                             <h3>{{ $item->title }}</h3>
                             <h5><{{ $item->Category->name }}</h5>
                             <p>{!! Str::limit(strip_tags($item->text), 100, '...') !!}</p>
-                            <a href="/blogs/{{ $item->slug }}" class="btn">read more</a>
+                            <a href="/read/{{ $item->slug }}" class="btn">read more</a>
                         </div>
                     </div>
                 @endforeach

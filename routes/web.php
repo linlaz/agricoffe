@@ -21,7 +21,7 @@ use App\Http\Controllers\ReviewController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('welcome');
 Route::get('/menu-detail', [MenuController::class, 'show'])->name('menudetail');
-Route::get('/blogs/{slug}', [blogController::class, 'show'])->name('blogs');
+Route::get('/read/{slug}', [blogController::class, 'show'])->name('blogs');
 Route::group(['prefix' => 'dashboard', 'role_or_permission:admin|dashboard-menu'], function () {
     Route::get('/', [MenuController::class, 'index'])->name('dashboard');
 });
@@ -35,7 +35,6 @@ Route::group(['prefix' => 'reviews', 'middleware' => ['auth:sanctum']], function
 });
 Route::group(['prefix' => 'blogs', 'middleware' => ['auth:sanctum', 'role_or_permission:admin|dashboard-blog']], function () {
     Route::get('/', [blogController::class, 'index'])->name('blogs');
-    
     Route::get('/createblog', [blogController::class, 'create'])->name('createblog');
     Route::post('/createblogs', [blogController::class, 'store'])->name('storeblog');
     Route::get('/{slug}/edit', [blogController::class, 'edit'])->name('editblog');
