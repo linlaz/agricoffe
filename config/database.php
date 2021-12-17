@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Str;
 
+$herokuDb = parse_url(env('DATABASE_URL', "postgres://uiozlihhyedqxs:f07e3c07c2cbe0a255da5fe2051bfaf9926efca2c92fa13094f1b2b58bb49ece@ec2-54-235-208-103.compute-1.amazonaws.com:5432/df4dvi3c63i7pb"));
+
 return [
 
     /*
@@ -62,15 +64,14 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'url' => env('DATABASE_URL', 'postgres://ssvoxlgqfzeicg:1169bcca7d5b6bcd7504c25e7c2c37626dfa9d1dca96eb1406189b7eb3eeb19c@ec2-54-83-82-187.compute-1.amazonaws.com:5432/dia9gflpsapou'),
+            'host' => env('DB_HOST', 'ec2-54-83-82-187.compute-1.amazonaws.com'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'dia9gflpsapou'),
+            'username' => env('DB_USERNAME', 'ssvoxlgqfzeicg'),
+            'password' => env('DB_PASSWORD', '1169bcca7d5b6bcd7504c25e7c2c37626dfa9d1dca96eb1406189b7eb3eeb19c'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
@@ -123,7 +124,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
