@@ -5,6 +5,7 @@ use App\Http\Controllers\blogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReviewController;
 
@@ -28,6 +29,9 @@ Route::group(['prefix' => 'dashboard', 'role_or_permission:admin|dashboard-menu'
 
 Route::group(['prefix' => 'cart', 'middleware' => ['auth:sanctum']], function () {
     Route::get('/', [CartController::class, 'index'])->name('cart');
+});
+Route::group(['prefix' => 'pesanan', 'middleware' => ['auth:sanctum', 'role_or_permission:admin|kasir|dashboard-cart']], function () {
+    Route::get('/', [OrderController::class, 'index'])->name('pesanan');
 });
 Route::group(['prefix' => 'reviews', 'middleware' => ['auth:sanctum']], function () {
     Route::get('/', [ReviewController::class, 'index'])->name('review');

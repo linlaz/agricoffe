@@ -90,6 +90,9 @@ class DatabaseSeeder extends Seeder
         $addblog = Permission::create([
             'name' => 'add-blog'
         ]);
+        $addblog1 = Permission::create([
+            'name' => 'dashboard-cart'
+        ]);
         $admin->givePermissionTo(['add-role', 'edit-role', 'delete-role', 'add-permission', 'edit-permission', 'delete-permission']);
         $user = User::create([
             'name' => 'lintang lazuardi',

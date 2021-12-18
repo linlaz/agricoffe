@@ -42,14 +42,22 @@
                 @auth
                     @role('admin')
                         <a href="{{ route('dashboard') }}" class="fas fa-user"></a>
-                    @else
-                     <form method="POST" action="{{ route('logout') }}">
+                    @endrole
+                    @role('writer')
+                        <a href="{{ route('dashboard') }}" class="fas fa-user"></a>
+                    @endrole
+                    @role('kasir')
+                        <a href="{{ route('dashboard') }}" class="fas fa-user"></a>
+                    @endrole
+                    @role('perlanggan')
+                        <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                         <button class="fas fa-user" type="submit"></button>
                      </form>
                     @endrole
-                   
-                @endauth
+                     
+                    
+                    @endauth
                 @guest
                     <a href="{{ route('login') }}" class="fas fa-user"></a>
                 @endguest

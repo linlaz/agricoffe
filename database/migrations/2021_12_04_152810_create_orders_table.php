@@ -16,6 +16,8 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->enum('acc', ['1', '0']);
+            $table->string('total');
             $table->timestamps();
         });
     }

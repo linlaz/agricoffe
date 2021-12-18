@@ -39,13 +39,14 @@ class CartController extends Controller
      * @param  \App\Http\Requests\StoreCartRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //ambil data user input ke pesanan dan create
-        $user = Order::create([
-            'user_id' => Auth::user()->id,
-        ]);
-    }
+    // public function store(Request $request)
+    // {
+    //     //ambil data user input ke pesanan dan create
+    //     $user = Order::create([
+    //         'user_id' => Auth::user()->id,
+    //         'acc'=>'0'
+    //     ]);
+    // }
 
     /**
      * Display the specified resource.
@@ -53,9 +54,10 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show(Cart $cart)
+    public function show()
     {
-        //
+        // $cart = Cart::with('user')->where('checkout','1')->get();
+        
     }
 
     /**

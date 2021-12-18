@@ -22,10 +22,12 @@ class Cart extends Component
         ModelsCart::where('id',$idcart)->delete();
     }
 
-    public function checkoutcart()
+    public function checkoutcart($tot)
     {
         $order = Order::create([
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id,
+            'acc' => '0',
+            'total' => $tot
         ]);
         $i = 0;
         while($i < $this->cart->count()){

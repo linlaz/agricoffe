@@ -13,18 +13,31 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @can('dashboard-menu')
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    @endcan
+                    @can('dashboard-blog')
                     <x-jet-nav-link href="{{ route('blogs') }}" :active="request()->routeIs('blogs*')">
                         {{ __('blogs') }}
                     </x-jet-nav-link>
+                    @endcan
+                     @can('dashboard-cart')
+                    <x-jet-nav-link href="{{ route('pesanan') }}" :active="request()->routeIs('pesanan*')">
+                        {{ __('Pesanan') }}
+                    </x-jet-nav-link>
+                    @endcan
+                     @can('dashboard-user')
                      <x-jet-nav-link href="{{ route('user') }}" :active="request()->routeIs('user')">
                         {{ __('user') }}
                     </x-jet-nav-link>
+                    @endcan
+                    @can('dashboard-role')
                      <x-jet-nav-link href="{{ route('role') }}" :active="request()->routeIs('role')">
                         {{ __('role') }}
                     </x-jet-nav-link>
+                    @endcan
                 </div>
             </div>
 

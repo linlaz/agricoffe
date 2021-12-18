@@ -1,5 +1,6 @@
 <div>
     {{-- The whole world belongs to you. --}}
+    
     @if ($cart->count() == 0)
         belum ada pesanan
     @else
@@ -39,14 +40,8 @@
 
                     <span>IDR {{ $total }}</span>
                 </p>
-
-                <p>
-                    <span>Number of Items</span>
-
-                    <span>2</span>
-                </p>
-
-                <button wire:click="checkoutcart()" class="btn btn-primary">Proceed to Checkout</button>
+                {{-- <input type="hidden" wire:model='total' /> --}}
+                <button wire:click="checkoutcart({{$total}})" class="btn btn-primary">Proceed to Checkout</button>
 
             </div>
         </div>
