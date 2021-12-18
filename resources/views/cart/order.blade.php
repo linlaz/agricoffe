@@ -40,6 +40,14 @@
                         <td>
                             <button type="button" wire:click="detail('{{ $item->id }}')"
                                 class="btn btn-success">detail</button>
+                            @if ($item->acc == '0')
+                                <button type="button" wire:click="accorder('{{ $item->id }}')"
+                                    class="btn btn-primary">belum selesai</button>
+                            @else
+                                <button type="button"
+                                    class="btn btn-danger">sudah selesai</button>
+                            @endif
+
                         </td>
                     </tr>
                 @endforeach
