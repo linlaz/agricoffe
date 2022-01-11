@@ -17,6 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
             $table->enum('acc', ['1', '0']);
+            $table->enum('type', ['onsite', 'delivery']);
             $table->string('total');
             $table->timestamps();
         });

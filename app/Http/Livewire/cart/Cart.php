@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class Cart extends Component
 {
-    public $cart;
+    public $cart,$typecart;
     public function render()
     {
+        
         $this->cart = ModelsCart::where('user_id', Auth::user()->id)->where('checkout', '0')->get();
         return view('cart.cart',[
             'cart' => $this->cart
@@ -27,7 +28,8 @@ class Cart extends Component
         $order = Order::create([
             'user_id' => Auth::user()->id,
             'acc' => '0',
-            'total' => $tot
+            'total' => $tot,
+            'type'=> $this->typecart
         ]);
         $i = 0;
         while($i < $this->cart->count()){

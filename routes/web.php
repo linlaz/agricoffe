@@ -23,7 +23,7 @@ use App\Http\Controllers\ReviewController;
 Route::get('/', [DashboardController::class, 'index'])->name('welcome');
 Route::get('/menu-detail', [MenuController::class, 'show'])->name('menudetail');
 Route::get('/read/{slug}', [blogController::class, 'show'])->name('blogs');
-Route::group(['prefix' => 'dashboard', 'role_or_permission:admin|dashboard-menu'], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth:sanctum','role_or_permission:admin|dashboard-menu']], function () {
     Route::get('/', [MenuController::class, 'index'])->name('dashboard');
 });
 

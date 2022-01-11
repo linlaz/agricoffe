@@ -28,6 +28,8 @@
                     <th scope="col">ID ORDER</th>
                     <th scope="col">total price</th>
                     <th scope="col">order by</th>
+                    <th scope="col">alamat</th>
+                    <th scope="col">type order</th>
                     <th scope="col">action</th>
                 </tr>
             </thead>
@@ -37,6 +39,8 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->total }}</td>
                         <td>{{ $item->user->name }}</td>
+                        <td>{{ $item->user->address }}</td>
+                        <td>{{ $item->type }}</td>
                         <td>
                             <button type="button" wire:click="detail('{{ $item->id }}')"
                                 class="btn btn-success">detail</button>

@@ -40,6 +40,12 @@
 
                     <span>IDR {{ $total }}</span>
                 </p>
+                <p>
+                    <select name="type" id="" wire:model="typecart">
+                        <option value="onsite" name="onsite">Onsite</option>
+                        <option value="delivery" name="delivery">delivery</option>
+                    </select>
+                </p>
                 {{-- <input type="hidden" wire:model='total' /> --}}
                 <button wire:click="checkoutcart({{$total}})" class="btn btn-primary">Proceed to Checkout</button>
 
@@ -47,3 +53,4 @@
         </div>
     @endif
 </div>
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias nesciunt fuga quas maiores impedit, fugiat omnis distinctio illum harum repudiandae?Cappucino

@@ -49,10 +49,10 @@
                     @role('kasir')
                         <a href="{{ route('dashboard') }}" class="fas fa-user"></a>
                     @endrole
-                    @role('perlanggan')
+                    @role('pelanggan')
                         <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                        <button class="fas fa-user" type="submit"></button>
+                        <button class="fas fa-user" type="submit">keluar</button>
                      </form>
                     @endrole
                      
