@@ -9,6 +9,34 @@
 | Lintang Lazuardi  | G6401201058  |
 | Muhammad Dzaki Fahreza  | G6401201001  |
 | Dhea Miranda Widana Putri  | G6401201019  |
+## Clone WEB
+```
+git clone https://github.com/linlaz/agricoffe.git
+```
+```
+cd Peminjaman-Buku
+```
+```
+copy .env.example .env
+```
+```
+composer install
+```
+```
+php artisan storage:link
+```
+```
+php artisan key:generate
+```
+```
+php artisan migrate
+```
+```
+php artisan db:seed
+```
+```
+php artisan serve
+```
 ## WEB
 ### Dashboard Admin
 > Dashboard Menu
