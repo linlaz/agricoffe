@@ -14,7 +14,7 @@
 git clone https://github.com/linlaz/agricoffe.git
 ```
 ```
-cd Peminjaman-Buku
+cd agricoffe
 ```
 ```
 copy .env.example .env
