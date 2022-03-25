@@ -22,7 +22,6 @@ class Indexrole extends Component
     {
         $role = ModelsRole::all();
         $permission = Permission::all();
-        $permissions = Permission::all();
         return view('role.indexrole', [
             'role' => $role,
             'permissions' => $permission,
